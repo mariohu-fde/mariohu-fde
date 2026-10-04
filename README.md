@@ -81,14 +81,6 @@ flowchart LR
 
 ---
 
-## Activity
-
-<div align="center">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=mariohu-fde&bg_color=00000000&color=8b949e&line=3fb950&point=58a6ff&area=true&area_color=238636&hide_border=true&custom_title=Rolling%20engineering%20activity" width="100%" alt="GitHub activity graph">
-</div>
-
----
-
 ## How I Judge the Work
 
 Falsification before confirmation. Bounded digests before raw telemetry dumps. Negative knowledge (`DISPROVEN_DEAD_END`) preserved alongside positive playbooks. A small, local first run with zero external dependencies that makes the next architectural decision clear.
