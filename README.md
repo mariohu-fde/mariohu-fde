@@ -27,9 +27,9 @@ A 50,000-token Cloud Logging or BigQuery `INFORMATION_SCHEMA` dump should not co
 
 Generic paper summaries do not survive production contact. `agentic-systems-radar` translates daily frontier `arXiv` agentic systems papers (`Dream-RSI`, `RRSI`, `RetireOPD`, `SWE-Router`, `RepoMAS`, `GraMRAG`) into concrete **Architecture Decision Records (ADRs)** and explicit **Adoption / RejectionVerdicts**.
 
-**First proof:** Read `ADR-0001` (why we rejected raw context stuffing and LLM-based summarization in favor of deterministic `SQLite-JSON1` interception) and `ADR-0002` (why single-agent ReAct loops fail on multi-tenant cloud incidents without a `Falsify/Verify` state transition).
+**First proof:** Read `ADR-001` (why single-agent ReAct loops fail on multi-tenant cloud incidents without a `Falsify/Verify` state transition) and `ADR-003` (why we rejected raw context stuffing and LLM summarization in favor of deterministic `SQLite-JSON1` interception).
 
-[Repository & Index](https://github.com/mariohu-fde/agentic-systems-radar) · [ADR-0001: Zero-Bloat Tool Compaction](https://github.com/mariohu-fde/agentic-systems-radar/blob/main/adrs/ADR-0001-sqlite-json1-tool-output-compaction.md) · [ADR-0002: Falsification-First RCA](https://github.com/mariohu-fde/agentic-systems-radar/blob/main/adrs/ADR-0002-falsification-first-rca-state-machine.md)
+[Repository & Index](https://github.com/mariohu-fde/agentic-systems-radar) · [ADR-001: Falsification StateGraph](https://github.com/mariohu-fde/agentic-systems-radar/blob/main/adrs/ADR-001-falsification-first-stategraph.md) · [ADR-002: Dead-End Contracts](https://github.com/mariohu-fde/agentic-systems-radar/blob/main/adrs/ADR-002-negative-knowledge-dead-end-contracts.md) · [ADR-003: SQLite-JSON1 Compaction](https://github.com/mariohu-fde/agentic-systems-radar/blob/main/adrs/ADR-003-sqlite-json1-tool-output-compaction.md)
 
 ---
 
@@ -48,8 +48,8 @@ Production enterprise deployments fail at integration seams—silent grounding d
 | Prevent an RCA agent from re-probing falsified root causes | [`cloudops-autonomous-agent/schemas`](https://github.com/mariohu-fde/cloudops-autonomous-agent/blob/main/schemas/incident.py) | `DisprovenDeadEnd` & `to_anti_anchoring_prompt_block()` |
 | Keep 50KB+ JSON tool logs out of the LLM context window | [`cloudops-autonomous-agent/middleware`](https://github.com/mariohu-fde/cloudops-autonomous-agent/blob/main/middleware/tool_compactor.py) | `SQLiteToolCompactor.after_tool_callback()` & `query_json_slice()` |
 | Gate long-term agent memory against bloated prompt drift | [`cloudops-autonomous-agent/evals`](https://github.com/mariohu-fde/cloudops-autonomous-agent/blob/main/evals/replay_scorer.py) | `CounterfactualReplayScorer` & `MAX_CONSTITUTION_LINES = 120` |
-| Evaluate why a frontier agent paper should be adopted or rejected | [`agentic-systems-radar/digests`](https://github.com/mariohu-fde/agentic-systems-radar/tree/main/digests) | Daily `2026-09-*` Systems Radar & Tradeoff Verdicts |
-| Review architectural tradeoffs before writing orchestration code | [`agentic-systems-radar/adrs`](https://github.com/mariohu-fde/agentic-systems-radar/tree/main/adrs) | `ADR-0001` & `ADR-0002` |
+| Evaluate why a frontier agent paper should be adopted or rejected | [`agentic-systems-radar/digests`](https://github.com/mariohu-fde/agentic-systems-radar/tree/main/digests) | `2026-09` & `2026-10` Systems Radar Verdicts |
+| Review architectural tradeoffs before writing orchestration code | [`agentic-systems-radar/adrs`](https://github.com/mariohu-fde/agentic-systems-radar/tree/main/adrs) | `ADR-001`, `ADR-002` & `ADR-003` |
 
 ---
 
